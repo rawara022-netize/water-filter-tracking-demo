@@ -1,0 +1,133 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us | PureWater Demo</title>
+<meta name="description" content="Contact the PureWater demo website to practise enquiry and lead tracking.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#17324d;background:#f4f8fc;line-height:1.65}
+header{background:white;box-shadow:0 2px 12px #17324d12}
+nav{max-width:1100px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:800;color:#0878c9;text-decoration:none}
+nav div{display:flex;gap:16px;flex-wrap:wrap}
+nav div a,footer a{color:inherit;text-decoration:none;font-size:14px;font-weight:bold}
+.hero{text-align:center;padding:55px 20px;background:linear-gradient(120deg,#e2f4ff,#fff)}
+.hero h1{font-size:clamp(32px,5vw,44px);margin:8px 0}
+.hero p{max-width:650px;margin:auto;color:#52677c}
+.wrap{max-width:1000px;margin:35px auto;padding:0 20px}
+.grid{display:grid;grid-template-columns:1fr 1.2fr;gap:22px}
+.panel{background:white;border-radius:14px;padding:26px;box-shadow:0 5px 24px #17324d0c}
+h2{margin-top:0}
+.info{margin:22px 0}
+.info strong{display:block;margin-bottom:4px}
+label{font-weight:bold;font-size:14px}
+form{display:grid;gap:13px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d4dfeb;border-radius:7px;font:inherit;background:white}
+textarea{min-height:110px;resize:vertical}
+.btn{display:inline-block;padding:12px 16px;border-radius:7px;background:#0878c9;color:white;text-decoration:none;border:0;font-weight:bold;font-size:14px;cursor:pointer;text-align:center}
+.btn:hover{background:#075b99}
+.btn.green{background:#16804a}
+.note{font-size:13px;background:#eaf6ff;padding:13px;border-radius:8px}
+#message{color:#087d59;font-weight:bold}
+footer{margin-top:45px;background:#102b46;color:white;padding:28px 20px}
+.foot{max-width:1100px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{margin-right:14px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:0 15px}nav div{gap:10px}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="index.html">💧 PureWater</a>
+<div>
+<a href="index.html">Home</a>
+<a href="water-filters.html">Water Filters</a>
+<a href="why-choose-us.html">Why Choose Us</a>
+<a href="free-guide.html">Free Guide</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<p>WE'RE HERE TO HELP</p>
+<h1>Contact PureWater</h1>
+<p>Have a question about our illustrative demo products? Use this page to practise enquiry forms and contact-button tracking.</p>
+</section>
+
+<main class="wrap">
+<div class="grid">
+<section class="panel">
+<h2>Contact Information</h2>
+<p>This is a practice website. The contact details and form are for demonstration purposes.</p>
+<div class="info"><strong>📞 Phone</strong><p>Use the demo call button to test click tracking.</p><a class="btn" href="tel:88954785483" data-event="click_to_call">Call for Assistance</a></div>
+<div class="info"><strong>💬 WhatsApp</strong><p>Open WhatsApp with a sample enquiry message.</p><a class="btn green" href="https://wa.me/9188954785483?text=Hello%2C%20I%20have%20a%20question%20about%20your%20demo%20water%20filters." target="_blank" rel="noopener" data-event="whatsapp_click">Message on WhatsApp</a></div>
+<p class="note">Note: The phone and WhatsApp links use the configured contact number. If you don't want your personal number public, replace it before sharing the website.</p>
+</section>
+
+<section class="panel">
+<h2>Send a Demo Enquiry</h2>
+<p>Fields marked as required must be completed. The information stays in this page and is not sent to a server.</p>
+<form id="contactForm">
+<label for="name">Full name</label>
+<input id="name" name="name" required placeholder="Enter a sample name">
+<label for="email">Email address</label>
+<input id="email" name="email" type="email" required placeholder="you@example.com">
+<label for="interest">What are you interested in?</label>
+<select id="interest" name="interest" required>
+<option value="">Select an option</option>
+<option>Best Overall Filter</option>
+<option>Budget Friendly Filter</option>
+<option>Compact Water Filter</option>
+<option>General Question</option>
+</select>
+<label for="messageInput">Your message</label>
+<textarea id="messageInput" name="message" required placeholder="Type a sample message"></textarea>
+<button class="btn" type="submit">Submit Demo Enquiry →</button>
+<p id="message" role="status"></p>
+</form>
+</section>
+</div>
+</main>
+
+<footer>
+<div class="foot">
+<div><strong>💧 PureWater</strong><p>Educational website for marketing analytics practice.</p></div>
+<div><a href="index.html">Home</a><a href="water-filters.html">Water Filters</a><a href="free-guide.html">Free Guide</a><a href="privacy-policy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+<script>
+window.dataLayer=window.dataLayer||[];
+const params=new URLSearchParams(location.search);
+const interest=params.get("product");
+if(interest){
+ const select=document.getElementById("interest");
+ const match=[...select.options].find(o=>o.text.toLowerCase()===interest.toLowerCase());
+ if(match) select.value=match.value;
+}
+document.getElementById("contactForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ window.dataLayer.push({
+  event:"generate_lead",
+  form_name:"contact_demo_form",
+  interest:document.getElementById("interest").value,
+  demo_mode:true
+ });
+ document.getElementById("message").textContent="Demo enquiry submitted successfully. No information was sent or stored.";
+ this.reset();
+});
+document.querySelectorAll("[data-event]").forEach(el=>{
+ el.addEventListener("click",()=>window.dataLayer.push({
+  event:el.dataset.event,
+  button_text:el.textContent.trim(),
+  demo_mode:true
+ }));
+});
+</script>
+</body>
+</html>
+```
