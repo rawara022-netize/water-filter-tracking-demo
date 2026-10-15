@@ -1,0 +1,168 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water Filters | PureWater Demo</title>
+<meta name="description" content="Explore demo water filter products, compare features and send an enquiry.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#17324d;background:#f4f8fc;line-height:1.6}
+header{background:white;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #17324d12}
+nav{max-width:1150px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:800;color:#0878c9;text-decoration:none}
+nav div{display:flex;gap:18px;flex-wrap:wrap}
+nav div a{color:#17324d;text-decoration:none;font-size:14px;font-weight:700}
+nav a:hover{color:#0878c9}
+.hero{padding:65px 20px;text-align:center;background:linear-gradient(125deg,#e3f4ff,#f9fcff)}
+.hero h1{font-size:clamp(32px,5vw,48px);line-height:1.15;margin:0 0 14px}
+.hero p{max-width:650px;margin:0 auto 22px;color:#52677c}
+.wrap{max-width:1150px;margin:auto;padding:38px 22px}
+.filters{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;margin-bottom:24px}
+input,select,textarea{font:inherit;padding:12px;border:1px solid #d5e0eb;border-radius:8px;width:100%;background:white}
+.filters input{max-width:340px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:22px}
+.card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 5px 24px #17324d0c;display:flex;flex-direction:column}
+.card img{width:100%;height:205px;object-fit:cover}
+.card-content{padding:20px;display:flex;flex-direction:column;flex:1}
+.tag{font-size:11px;color:#087d59;font-weight:800;text-transform:uppercase}
+h2{line-height:1.25}
+.card h2{font-size:21px;margin:8px 0}
+.price{font-size:23px;font-weight:800;color:#0878c9;margin:8px 0}
+.small{font-size:12px;color:#697d91}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:auto;padding-top:16px}
+.btn{display:inline-block;border:0;border-radius:7px;background:#0878c9;color:white;text-decoration:none;padding:11px 15px;font-weight:700;font-size:14px;cursor:pointer;text-align:center}
+.btn:hover{background:#075fa0}
+.btn.alt{background:white;border:1px solid #0878c9;color:#0878c9}
+.btn.alt:hover{background:#eaf6ff}
+.panel{background:white;border-radius:14px;padding:28px;margin-top:34px;box-shadow:0 5px 24px #17324d0c}
+form{display:grid;gap:14px;max-width:600px}
+footer{background:#102b46;color:white;padding:30px 22px;margin-top:40px}
+.footer-inner{max-width:1150px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+footer a{color:white;margin-right:14px}
+@media(max-width:600px){nav div{gap:12px}.hero{padding:45px 18px}.wrap{padding:25px 16px}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="index.html">💧 PureWater</a>
+<div>
+<a href="index.html">Home</a>
+<a href="water-filters.html">Water Filters</a>
+<a href="why-choose-us.html">Why Choose Us</a>
+<a href="free-guide.html">Free Guide</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<p class="tag">EXPLORE OUR COLLECTION</p>
+<h1>Find the Right Water Filter for Your Home</h1>
+<p>Compare demo products, review practical features and choose an option to explore further. Product details and prices below are illustrative examples for practice.</p>
+<a class="btn" href="#products">Explore Products ↓</a>
+</section>
+
+<main class="wrap">
+<div class="filters">
+<input id="search" type="search" placeholder="Search water filters..." aria-label="Search products">
+<select id="sort" aria-label="Sort products">
+<option value="default">Sort products</option>
+<option value="low">Price: low to high</option>
+<option value="high">Price: high to low</option>
+</select>
+</div>
+
+<section id="products" class="grid">
+<article class="card" data-name="best overall filter" data-price="4999">
+<img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=900&q=80" alt="Reusable water bottle representing everyday hydration" loading="lazy">
+<div class="card-content">
+<span class="tag">Popular option</span><h2>Best Overall Filter</h2>
+<p>A general-purpose demo option to compare features and everyday requirements.</p>
+<ul><li>Household use</li><li>Review maintenance needs</li><li>Check water compatibility</li></ul>
+<div class="price">₹4,999</div><span class="small">Illustrative demo price</span>
+<div class="actions"><a class="btn" href="product-best-overall.html">View Details</a><a class="btn alt" href="contact.html?product=Best%20Overall%20Filter">Enquire</a></div>
+</div></article>
+
+<article class="card" data-name="budget friendly filter" data-price="2499">
+<img src="https://images.unsplash.com/photo-1523362628745-0c100150b4a5?auto=format&fit=crop&w=900&q=80" alt="Water bottle on a table" loading="lazy">
+<div class="card-content">
+<span class="tag">Value pick</span><h2>Budget Friendly Filter</h2>
+<p>A budget-focused demo option for comparing ongoing costs and features.</p>
+<ul><li>Compare cartridge costs</li><li>Review replacement schedule</li><li>Check installation needs</li></ul>
+<div class="price">₹2,499</div><span class="small">Illustrative demo price</span>
+<div class="actions"><a class="btn" href="product-budget-friendly.html">View Details</a><a class="btn alt" href="contact.html?product=Budget%20Friendly%20Filter">Enquire</a></div>
+</div></article>
+
+<article class="card" data-name="compact water filter" data-price="3299">
+<img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=900&q=80" alt="Clear water in a glass" loading="lazy">
+<div class="card-content">
+<span class="tag">Space saver</span><h2>Compact Water Filter</h2>
+<p>A compact concept for smaller kitchens where available space matters.</p>
+<ul><li>Measure available space</li><li>Check installation fit</li><li>Review capacity and upkeep</li></ul>
+<div class="price">₹3,299</div><span class="small">Illustrative demo price</span>
+<div class="actions"><a class="btn" href="product-compact.html">View Details</a><a class="btn alt" href="contact.html?product=Compact%20Water%20Filter">Enquire</a></div>
+</div></article>
+</section>
+<p id="noResults" hidden>No matching demo products found. Try another search.</p>
+
+<section class="panel" id="compare">
+<h2>Compare Before You Choose</h2>
+<p>Check your water quality, filtration needs, available space, installation requirements and long-term maintenance costs before selecting a real product.</p>
+<a class="btn alt" href="blog-best-water-filter.html">Read Buying Advice</a>
+<a class="btn alt" href="blog-ro-vs-uv-vs-uf.html">Compare RO, UV and UF</a>
+</section>
+
+<section class="panel">
+<h2>Need Help Choosing?</h2>
+<p>Send a sample enquiry to practise lead-generation tracking. This form is for demonstration only and does not send information to a real sales team.</p>
+<form id="enquiryForm">
+<label for="name">Your name</label><input id="name" name="name" required placeholder="Enter a sample name">
+<label for="email">Email address</label><input id="email" name="email" type="email" required placeholder="you@example.com">
+<label for="product">Product of interest</label>
+<select id="product" name="product" required>
+<option value="">Choose a demo product</option>
+<option>Best Overall Filter</option><option>Budget Friendly Filter</option><option>Compact Water Filter</option>
+</select>
+<button class="btn" type="submit">Submit Demo Enquiry →</button>
+<p id="formMessage" role="status"></p>
+</form>
+</section>
+</main>
+
+<footer><div class="footer-inner">
+<div><strong>💧 PureWater</strong><p>Water filter website for learning and analytics practice.</p><span class="small">Demo products only. No real orders or payments.</span></div>
+<div><a href="index.html">Home</a><a href="why-choose-us.html">Why Choose Us</a><a href="free-guide.html">Free Guide</a><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a></div>
+</div></footer>
+
+<script>
+const cards=[...document.querySelectorAll(".card")];
+const search=document.getElementById("search");
+const sort=document.getElementById("sort");
+function updateProducts(){
+ const term=search.value.toLowerCase().trim();
+ cards.forEach(card=>card.hidden=!card.dataset.name.includes(term));
+ document.getElementById("noResults").hidden=cards.some(card=>!card.hidden);
+ const visible=cards.filter(card=>!card.hidden);
+ if(sort.value==="low") visible.sort((a,b)=>+a.dataset.price- +b.dataset.price);
+ if(sort.value==="high") visible.sort((a,b)=>+b.dataset.price- +a.dataset.price);
+ visible.forEach(card=>document.getElementById("products").appendChild(card));
+}
+search.addEventListener("input",updateProducts);
+sort.addEventListener("change",updateProducts);
+document.getElementById("enquiryForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const product=document.getElementById("product").value;
+ window.dataLayer=window.dataLayer||[];
+ window.dataLayer.push({event:"generate_lead",form_name:"product_enquiry",product_name:product,demo_mode:true});
+ document.getElementById("formMessage").textContent="Demo enquiry submitted successfully. No data was sent to a business.";
+ this.reset();
+});
+const params=new URLSearchParams(location.search);
+if(params.get("product")) document.getElementById("product").value=params.get("product");
+</script>
+</body>
+</html>
+```
