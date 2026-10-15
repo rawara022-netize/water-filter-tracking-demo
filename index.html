@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clean Water Demo</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #203040; background: #f5f8fb; }
+    header { background: #123b5d; color: white; padding: 55px 20px; text-align: center; }
+    header h1 { font-size: 38px; margin: 0 0 15px; }
+    main { max-width: 1000px; margin: auto; padding: 24px; }
+    section { background: white; padding: 24px; margin: 20px 0; border-radius: 12px; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap: 16px; }
+    .product { border: 1px solid #dbe3eb; border-radius: 10px; padding: 18px; }
+    button, .btn { display: inline-block; background: #1261a0; color: white; border: 0; border-radius: 6px; padding: 12px 16px; cursor: pointer; text-decoration: none; margin: 5px 4px 5px 0; }
+    input, select { display: block; width: 100%; max-width: 480px; padding: 11px; margin: 8px 0 16px; box-sizing: border-box; }
+    label { font-weight: bold; }
+    .note { color: #526579; font-size: 14px; }
+    footer { text-align: center; padding: 25px; background: #e7edf3; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Clean, Great-Tasting Drinking Water</h1>
+  <p>Explore water filter options for your home.</p>
+  <a class="btn" href="#products" data-event="hero_cta_click">Explore Filters</a>
+</header>
+
+<main>
+  <section id="products">
+    <h2>Explore Water Filters</h2>
+    <div class="products">
+      <div class="product">
+        <h3>Best Overall Filter</h3>
+        <p>Explore filtration features and maintenance needs.</p>
+        <button data-event="product_click" data-product="Best Overall Filter">View Product</button>
+      </div>
+      <div class="product">
+        <h3>Budget Friendly Filter</h3>
+        <p>Compare upfront and ongoing costs.</p>
+        <button data-event="product_click" data-product="Budget Friendly Filter">View Product</button>
+      </div>
+      <div class="product">
+        <h3>Compact Water Filter</h3>
+        <p>Review space and installation requirements.</p>
+        <button data-event="product_click" data-product="Compact Water Filter">View Product</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact Us</h2>
+    <p>Call for assistance with your demo enquiry.</p>
+    <a class="btn" href="tel:88954785483" data-event="click_to_call">Call for Assistance</a>
+  </section>
+
+  <section id="enquiry">
+    <h2>Water Filter Enquiry</h2>
+    <p class="note">Practice form only. Do not enter real personal information.</p>
+    <form id="enquiryForm">
+      <label for="fullName">Demo name</label>
+      <input id="fullName" required>
+      <label for="filter">Interested filter</label>
+      <select id="filter" required>
+        <option value="">Choose a filter</option>
+        <option>Best Overall Filter</option>
+        <option>Budget Friendly Filter</option>
+        <option>Compact Water Filter</option>
+      </select>
+      <button type="submit">Submit Demo Enquiry</button>
+    </form>
+    <p id="enquiryResult" role="status"></p>
+  </section>
+
+  <section>
+    <h2>Try a Demo Purchase</h2>
+    <p>No real order or payment will be made.</p>
+    <button id="purchaseButton">Complete Demo Purchase</button>
+    <p id="purchaseResult" role="status"></p>
+  </section>
+
+  <section>
+    <h2>Book a Demo Appointment</h2>
+    <form id="bookingForm">
+      <label for="bookingDate">Choose a demo date</label>
+      <input type="date" id="bookingDate" required>
+      <button type="submit">Submit Demo Booking</button>
+    </form>
+    <p id="bookingResult" role="status"></p>
+    <p class="note">This does not create a real appointment.</p>
+  </section>
+
+  <section>
+    <h2>Free Water Filter Buying Guide</h2>
+    <p>Download our demo guide to learn what to compare when choosing a filter.</p>
+    <a class="btn" href="https://drive.google.com/file/d/1wRUBwG0rz15RkBGYm2teIyOTW9sBDnEd/view?usp=drive_link" target="_blank" rel="noopener" data-event="file_download">Download Buying Guide</a>
+  </section>
+
+  <section>
+    <h2>WhatsApp</h2>
+    <p>WhatsApp contact will be added after a suitable number is confirmed.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Clean Water Demo Website — for learning and tracking practice only.</p>
+</footer>
+
+<script>
+  // Practice events. Later, we will connect suitable events to GTM and GA4.
+  document.querySelectorAll("[data-event]").forEach(function (element) {
+    element.addEventListener("click", function () {
+      console.log("Demo event:", element.dataset.event, element.dataset.product || "");
+    });
+  });
+
+  document.getElementById("enquiryForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    document.getElementById("enquiryResult").textContent = "Demo enquiry submitted successfully.";
+    console.log("Demo event: generate_lead");
+  });
+
+  document.getElementById("purchaseButton").addEventListener("click", function () {
+    document.getElementById("purchaseResult").textContent = "Demo purchase completed. No real payment was made.";
+    console.log("Demo event: purchase");
+  });
+
+  document.getElementById("bookingForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    document.getElementById("bookingResult").textContent = "Demo booking submitted. No real appointment was created.";
+    console.log("Demo event: booking_submit");
+  });
+</script>
+</body>
+</html>
