@@ -1,0 +1,111 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Details | PureWater Demo</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f8fc;color:#17324d;line-height:1.65}
+header,footer{background:#102b46;color:white;padding:18px 5%}
+nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+nav a,footer a{color:white;text-decoration:none;margin-right:14px}
+.logo{font-size:22px;font-weight:bold}
+main{max-width:1050px;margin:35px auto;padding:0 20px}
+.card{background:white;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 8px 30px #17324d12}
+.card img{width:100%;height:100%;min-height:340px;object-fit:cover}
+.info{padding:30px}
+.tag{color:#087d59;font-size:12px;font-weight:bold;text-transform:uppercase}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.2}
+.price{font-size:29px;color:#0878c9;font-weight:bold}
+button,.btn{display:inline-block;background:#0878c9;color:white;padding:12px 18px;border:0;border-radius:7px;text-decoration:none;font-weight:bold;cursor:pointer;margin:5px 5px 5px 0}
+button:hover,.btn:hover{background:#075b99}
+.note{background:#e6f5ff;padding:14px;border-radius:8px;font-size:14px}
+.message{color:#087d59;font-weight:bold}
+@media(max-width:650px){.card{grid-template-columns:1fr}.card img{min-height:230px}.info{padding:22px}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="index.html">💧 PureWater</a>
+<div>
+<a href="index.html">Home</a>
+<a href="water-filters.html">Water Filters</a>
+<a href="why-choose-us.html">Why Choose Us</a>
+<a href="contact.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<main>
+<a href="water-filters.html">← Back to Water Filters</a>
+<section class="card">
+<img id="productImage" src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1000&q=80" alt="Demo water filter product">
+<div class="info">
+<span class="tag">PureWater Demo Product</span>
+<h1 id="productName">Best Overall Filter</h1>
+<p id="productDescription">Explore this illustrative product and review its features before making a decision.</p>
+<div class="price" id="productPrice">₹4,999</div>
+<p class="note">Demo product only. This website does not sell or ship real products. The price and product information are illustrative.</p>
+<h3>What to check</h3>
+<ul>
+<li>Suitability for your water quality</li>
+<li>Installation requirements and available space</li>
+<li>Filter replacement and maintenance costs</li>
+<li>Manufacturer specifications and certifications</li>
+</ul>
+<button id="enquireButton" type="button">Enquire About This Product →</button>
+<p id="message" class="message" role="status"></p>
+<a class="btn" href="water-filters.html">Compare Products</a>
+</div>
+</section>
+</main>
+
+<footer>
+<nav>
+<span>PureWater Demo</span>
+<div><a href="contact.html">Contact</a><a href="privacy-policy.html">Privacy Policy</a></div>
+</nav>
+</footer>
+
+<script>
+const products={
+ "best-overall":{
+  name:"Best Overall Filter",price:"₹4,999",
+  description:"A general-purpose demo option. Check the filtration technology and product specifications against your household water quality.",
+  image:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1000&q=80"
+ },
+ "budget-friendly":{
+  name:"Budget Friendly Filter",price:"₹2,499",
+  description:"A budget-focused demo option. Compare purchase cost, cartridge replacement prices and long-term maintenance.",
+  image:"https://images.unsplash.com/photo-1523362628745-0c100150b4a5?auto=format&fit=crop&w=1000&q=80"
+ },
+ "compact":{
+  name:"Compact Water Filter",price:"₹3,299",
+  description:"A compact concept for smaller kitchens. Measure your space and verify installation and maintenance requirements.",
+  image:"https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1000&q=80"
+ }
+};
+const params=new URLSearchParams(location.search);
+const key=params.get("product")||"best-overall";
+const product=products[key]||products["best-overall"];
+document.title=product.name+" | PureWater Demo";
+document.getElementById("productName").textContent=product.name;
+document.getElementById("productPrice").textContent=product.price;
+document.getElementById("productDescription").textContent=product.description;
+document.getElementById("productImage").src=product.image;
+document.getElementById("productImage").alt=product.name;
+
+document.getElementById("enquireButton").addEventListener("click",function(){
+ window.dataLayer=window.dataLayer||[];
+ window.dataLayer.push({event:"product_enquiry_click",product_name:product.name,demo_mode:true});
+ location.href="contact.html?product="+encodeURIComponent(product.name);
+});
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:"view_item",ecommerce:{items:[{item_name:product.name,price:Number(product.price.replace(/[₹,]/g,""))}]},demo_mode:true});
+</script>
+</body>
+</html>
+```
