@@ -109,25 +109,44 @@ if(interest){
  const match=[...select.options].find(o=>o.text.toLowerCase()===interest.toLowerCase());
  if(match) select.value=match.value;
 }
-document.getElementById("contactForm").addEventListener("submit",function(e){
- e.preventDefault();
- window.dataLayer.push({
-  event:"generate_lead",
-  form_name:"contact_demo_form",
-  interest:document.getElementById("interest").value,
-  demo_mode:true
- });
- document.getElementById("message").textContent="Demo enquiry submitted successfully. No information was sent or stored.";
- this.reset();
+
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = this;
+  const submitButton = form.querySelector('button[type="submit"]');
+  const message = document.getElementById("message");
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting...";
+
+  const data = new URLSearchParams({
+    name: form.elements["name"].value,
+    email: form.elements["email"].value,
+    phone: form.elements["phone"] ? form.elements["phone"].value : "",
+    interest: form.elements["interest"].value,
+    message: form.elements["message"].value
+  });
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbwAOI4lifK07derNpMh_6MDh7hFEnvjCyBl8P6-UqebV5yqRTnoUIrVCwf2QSqWdUor/exec", {
+      method: "POST",
+      mode: "no-cors",
+      body: data
+    });
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "generate_lead",
+      form_name: "contact_demo_form",
+      interest: form.elements["interest"].value,
+      demo_mode: true
+    });
+
+    window.location.href = "thank-you.html";
+  } catch (error) {
+    message.textContent = "Submission failed. Please try again.";
+    submitButton.disabled = false;
+    submitButton.textContent = "Submit Demo Enquiry";
+  }
 });
-document.querySelectorAll("[data-event]").forEach(el=>{
- el.addEventListener("click",()=>window.dataLayer.push({
-  event:el.dataset.event,
-  button_text:el.textContent.trim(),
-  demo_mode:true
- }));
-});
-</script>
-</body>
-</html>
-```
